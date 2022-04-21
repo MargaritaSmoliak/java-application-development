@@ -5,7 +5,7 @@ import static com.acme.dbo.txlog.Decorator.decorateMess;
 
 public class Facade {
     private static int intAccumulator;
-    private static String facadeState;
+    private static String facadeState="";
     private static String stringAccumulator;
 
     public static void log(int message) {
@@ -32,11 +32,12 @@ public class Facade {
     public static void log(String message) {
         if ("Int State".equals(facadeState)) {
             flushInt();
-        }
-        printMess(decorateMess(message));
-        facadeState = "String State";
-        stringAccumulator = message;
-    } else
+        } //else if ("String State".equals(facadeState) || "".equals(facadeState)) {}
+            facadeState = "String State";
+            stringAccumulator = message;
+
+            //printMess(decorateMess(message));
+    }
 
     private static void flushInt() {
         printMess(decorateMess(intAccumulator));
